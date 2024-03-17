@@ -5,12 +5,22 @@
  */
 
 // Composables
-import { createRouter, createWebHistory } from 'vue-router/auto'
-import { setupLayouts } from 'virtual:generated-layouts'
+import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '../pages/HomePage.vue'
+import SurveyEditor from '../apps/survey-builder/pages/SurveyBuilder.vue'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  extendRoutes: setupLayouts,
+  routes: [
+    {
+      path: '/editor/:id',
+      component: SurveyEditor
+    },
+    {
+      path: '/',
+      component: HomePage
+    }
+  ]
 })
 
 export default router
